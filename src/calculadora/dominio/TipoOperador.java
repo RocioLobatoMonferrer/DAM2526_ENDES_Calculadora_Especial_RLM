@@ -14,7 +14,30 @@ package calculadora.dominio;
  */
 
 public enum TipoOperador {
-	SUMA("+"), RESTA("-"), MULTIPLICACION("*"), DIVISION("/");
+	SUMA("+") {
+		@Override
+		public double apply(double x, double y) {
+			return x + y;
+		}
+	},
+	RESTA("-") {
+		@Override
+		public double apply(double x, double y) {
+			return x - y;
+		}
+	},
+	MULTIPLICACION("*") {
+		@Override
+		public double apply(double x, double y) {
+			return x * y;
+		}
+	},
+	DIVISION("/") {
+		@Override
+		public double apply(double x, double y) {
+			return x / y;
+		}
+	};
 
 	private String simbolo;
 
@@ -37,4 +60,15 @@ public enum TipoOperador {
 	public String getSimbolo() {
 		return simbolo;
 	}
+
+	/**
+	 * Método abstracto para poder calcular la suma, resta, multiplicación y
+	 * división
+	 * 
+	 * @param x número 1 para la operación
+	 * @param y número 2 para la operación
+	 * @return el calculo en concreto
+	 */
+
+	public abstract double apply(double x, double y);
 }

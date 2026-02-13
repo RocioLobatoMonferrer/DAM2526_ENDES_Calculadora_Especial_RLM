@@ -176,7 +176,7 @@ public class Analizador {
 			return resultadoActual;
 		}
 
-		String normalizado = lower.replace(',', '.');
+		String normalizado = lower.replace(',', '.'); // ???
 		try {
 			return Double.parseDouble(normalizado);
 		} catch (NumberFormatException e) {
