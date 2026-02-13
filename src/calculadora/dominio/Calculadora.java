@@ -13,7 +13,7 @@ public class Calculadora {
 	private double resultadoActual;
 
 	public Calculadora() {
-		this.historial = new ArrayList<>(); // crea lista
+		this.historial = new ArrayList<>();
 		this.resultadoActual = 0;
 	}
 
@@ -33,5 +33,39 @@ public class Calculadora {
 	 */
 	public double getResultadoActual() {
 		return resultadoActual;
+	}
+
+	private void crearOperacion(String operacion) {
+		Operacion op = new Operacion(operacion, resultadoActual);
+	}
+
+	public void realizarCalculo(List<Double> numeros, List<TipoOperador> operadores, String operacion) {
+		resultadoActual = numeros.get(0);
+		for (int i = 0; i < operadores.size(); i++) {
+			Double num = numeros.get(i + 1);
+			TipoOperador operador = operadores.get(i);
+			switch (operador) {
+			case SUMA -> {
+				TipoOperador.SUMA.apply(num, resultadoActual);
+			}
+			case RESTA -> {
+				TipoOperador.RESTA.apply(num, resultadoActual);
+			}
+			case MULTIPLICACION -> {
+				TipoOperador.MULTIPLICACION.apply(num, resultadoActual);
+			}
+			case DIVISION -> {
+				TipoOperador.DIVISION.apply(num, resultadoActual);
+			}
+
+			}
+			;
+		}
+		crearOperacion(operacion);
+	}
+
+	public void reset() {
+		resultadoActual = 0;
+		historial.clear();
 	}
 }

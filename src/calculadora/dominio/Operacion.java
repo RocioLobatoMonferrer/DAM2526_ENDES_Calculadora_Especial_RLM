@@ -1,7 +1,5 @@
 package calculadora.dominio;
 
-import java.util.List;
-
 /**
  * Clase que se encarga de que las operaciones se lleve a acabo y pinte el
  * historial
@@ -9,21 +7,15 @@ import java.util.List;
 
 public class Operacion {
 
-	private List<Double> numeros;
-	private List<TipoOperador> operadores;
+	private String operacion;
+	private double resultado;
 
-	public Operacion(List<Double> numeros, List<TipoOperador> operadores) {
-		this.numeros = numeros;
-		this.operadores = operadores;
+	public Operacion(String operacion, double resultado) {
+		this.operacion = operacion;
+		this.resultado = resultado;
 	}
 
-	// TODO: preguntar como se supone que agarre los numeros y los operadores
-	public double calculo() {
-
-	}
-
-	// TODO: historial
 	public String toString() {
-		return String.format("");
+		return String.format("%s = %.2f\n", operacion, resultado);
 	}
 }
