@@ -1,6 +1,5 @@
 package calculadora.app;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -79,48 +78,5 @@ public class Consola {
 			}
 		}
 		return texto;
-	}
-
-	/**
-	 * Muestra un mensaje por consola y lee un número entero. Si el valor
-	 * introducido no es un entero válido, se vuelve a pedir.
-	 *
-	 * @param mensaje Mensaje que se muestra antes de la lectura.
-	 * @return Número entero introducido por el usuario.
-	 */
-
-	public int leerEntero(String mensaje) {
-		escribirLinea(mensaje);
-		int num = 0;
-		boolean error;
-		do {
-			try {
-				error = false;
-				num = sc.nextInt();
-			} catch (InputMismatchException e) {
-				error = true;
-				escribir(String.format("Error: El valor introducido no es correcto o sale del rango %d -- %d",
-						Integer.MIN_VALUE, Integer.MAX_VALUE));
-			} finally {
-				sc.nextLine();
-			}
-		} while (error);
-		return num;
-	}
-
-	/**
-	 * @param mensaje Mensaje que se muestra antes de la lectura.
-	 * @param min     Valor mínimo permitido (incluido).
-	 * @param max     Valor máximo permitido (incluido).
-	 * @return Número entero dentro del rango indicado.
-	 */
-
-	public int leerEnteroRango(String mensaje, int min, int max) {
-		int numero = leerEntero(mensaje);
-		while (numero < min || numero > max) {
-			escribirLinea("ERROR - Debe estar entre " + min + " y " + max + ".");
-			numero = leerEntero(mensaje);
-		}
-		return numero;
 	}
 }

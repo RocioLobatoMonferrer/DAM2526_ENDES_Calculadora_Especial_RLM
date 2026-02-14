@@ -23,7 +23,7 @@ public enum TipoOperador {
 	RESTA("-") {
 		@Override
 		public double apply(double x, double y) {
-			return x - y;
+			return y - x;
 		}
 	},
 	MULTIPLICACION("*") {

@@ -36,7 +36,7 @@ public class Calculadora {
 	}
 
 	private void crearOperacion(String operacion) {
-		Operacion op = new Operacion(operacion, resultadoActual);
+		historial.add(new Operacion(operacion, resultadoActual));
 	}
 
 	public void realizarCalculo(List<Double> numeros, List<TipoOperador> operadores, String operacion) {
@@ -46,16 +46,16 @@ public class Calculadora {
 			TipoOperador operador = operadores.get(i);
 			switch (operador) {
 			case SUMA -> {
-				TipoOperador.SUMA.apply(num, resultadoActual);
+				resultadoActual = TipoOperador.SUMA.apply(num, resultadoActual);
 			}
 			case RESTA -> {
-				TipoOperador.RESTA.apply(num, resultadoActual);
+				resultadoActual = TipoOperador.RESTA.apply(num, resultadoActual);
 			}
 			case MULTIPLICACION -> {
-				TipoOperador.MULTIPLICACION.apply(num, resultadoActual);
+				resultadoActual = TipoOperador.MULTIPLICACION.apply(num, resultadoActual);
 			}
 			case DIVISION -> {
-				TipoOperador.DIVISION.apply(num, resultadoActual);
+				resultadoActual = TipoOperador.DIVISION.apply(num, resultadoActual);
 			}
 
 			}
@@ -68,4 +68,19 @@ public class Calculadora {
 		resultadoActual = 0;
 		historial.clear();
 	}
+	
+	public String list() {
+		StringBuilder s = new StringBuilder("");
+		List<Operacion> listaOperaciones = getHistorial();
+		for (int i = 0; i < listaOperaciones.size(); i++) {
+			s.append(String.format("%d\t%s\n", i+1, listaOperaciones.get(i).toString()));
+		}
+		if(listaOperaciones.isEmpty()) {
+			s.append("No hay ninguna operación realizada");
+		} else {
+			s.append(String.format("Resultado Actual: %.2f", getResultadoActual()));
+		}
+		return s.toString();
+	}
+	
 }
