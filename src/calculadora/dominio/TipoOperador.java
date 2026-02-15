@@ -1,7 +1,7 @@
 package calculadora.dominio;
 
 /**
- * Clase encargada de enumerar las disntinas operaciones que se utilizarán en la
+ * Clase encargada de enumerar las distintas operaciones que se utilizarán en la
  * calculadora.<br>
  * SUMA: Sumará todos los datos que se le den<br>
  * RESTA: Restará todos los datos que se le den<br>
@@ -9,11 +9,11 @@ package calculadora.dominio;
  * DIVISION: Dividirá todos los datos que se le den<br>
  */
 
-/**
- * Método que define los tipos de operadores que se usarán en la calculadora
- */
-
 public enum TipoOperador {
+	/**
+	 * Atributos de TipoOperador que contienen cada un método que les permite
+	 * calcular su operación en concreto
+	 */
 	SUMA("+") {
 		@Override
 		public double apply(double x, double y) {

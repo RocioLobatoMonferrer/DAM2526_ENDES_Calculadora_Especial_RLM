@@ -36,16 +36,6 @@ public class Consola {
 	}
 
 	/**
-	 * Muestra un texto por consola sin salto de línea.
-	 *
-	 * @param texto Texto que se desea mostrar.
-	 */
-
-	public void escribir(String texto) {
-		System.out.print(texto);
-	}
-
-	/**
 	 * Muestra un mensaje por consola y lee una línea de texto introducida por el
 	 * usuario.
 	 *
@@ -57,26 +47,5 @@ public class Consola {
 		escribirLinea(mensaje);
 		String texto = sc.nextLine();
 		return texto.trim();
-	}
-
-	/**
-	 * Muestra un mensaje por consola y lee un texto no vacío. Si el usuario
-	 * introduce una cadena vacía o solo con espacios, se vuelve a pedir el dato.
-	 *
-	 * @param mensaje Mensaje que se muestra antes de la lectura.
-	 * @return Texto no vacío introducido por el usuario.
-	 */
-
-	public String leerTextoNoVacio(String mensaje) {
-		String texto = "";
-		while (texto.isBlank()) {
-			escribirLinea(mensaje);
-			texto = sc.nextLine();
-			texto = texto.trim();
-			if (texto.isBlank()) {
-				escribirLinea("ERROR - No puede estar vacío.");
-			}
-		}
-		return texto;
 	}
 }
