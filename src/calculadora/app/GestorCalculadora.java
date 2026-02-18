@@ -1,7 +1,7 @@
 package calculadora.app;
 
 import calculadora.dominio.Calculadora;
-import calculadora.dominio.Operacion;
+import calculadora.dominio.ICalculadora;
 import calculadora.dominio.ResultadoAnalisis;
 import calculadora.dominio.TipoComando;
 
@@ -13,31 +13,31 @@ import calculadora.dominio.TipoComando;
 
 public class GestorCalculadora {
 	/**
-	 * Objeto Consola que se encarga de todo relacionado a la comunicación y entrada
-	 * del usuario
+	 * Objeto Consola que utiliza una interfaz que se encarga de todo relacionado a
+	 * la comunicación y entrada del usuario
 	 */
-	private Consola consola;
+	private IEntradaSalida consola;
 	/**
-	 * Objeto Analizador que se encarga de analizar las entradas del usuario y
-	 * validar si son correctas o incorrectas
+	 * Objeto Analizador que utiliza una interfaz que se encarga de analizar las
+	 * entradas del usuario y validar si son correctas o incorrectas
 	 */
-	private Analizador analiza;
+	private IAnalizador analiza;
 	/**
 	 * Objeto ResultadoAnalisis que se encarga de recibir los resultado que obtuvo
 	 * la clase Analisis
 	 */
 	private ResultadoAnalisis resultadoAnalisis;
 	/**
-	 * Objeto Calculadora que se encarga que se puedan realizar las operaciones que
-	 * desee el ussuario
+	 * Objeto Calculadora que utiliza una interfaz que se encarga que se puedan
+	 * realizar las operaciones que desee el ussuario
 	 */
-	private Calculadora calculadora;
+	private ICalculadora calculadora;
 	private String operacion;
 
-	public GestorCalculadora() {
-		consola = new Consola();
-		analiza = new Analizador();
-		calculadora = new Calculadora();
+	public GestorCalculadora(Consola consola, Analizador analiza, Calculadora calculadora) {
+		this.consola = consola;
+		this.analiza = analiza;
+		this.calculadora = calculadora;
 	}
 
 	/**

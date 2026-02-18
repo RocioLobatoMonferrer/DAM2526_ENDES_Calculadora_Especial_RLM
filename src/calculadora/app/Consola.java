@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Clase encargada de la entrada y salida por consola
  */
 
-public class Consola {
+public class Consola implements IEntradaSalida {
 	private Scanner sc;
 
 	/**
@@ -18,31 +18,28 @@ public class Consola {
 	}
 
 	/**
-	 * Método que se encarga de cerrar la consola al final del programa.
+	 * {@inheritDoc}
 	 */
 
+	@Override
 	public void cerrar() {
 		this.sc.close();
 	}
 
 	/**
-	 * Muestra un texto por consola seguido de un salto de línea.
-	 *
-	 * @param texto Texto que se desea mostrar.
+	 * {@inheritDoc}
 	 */
 
+	@Override
 	public void escribirLinea(String texto) {
 		System.out.println(texto);
 	}
 
 	/**
-	 * Muestra un mensaje por consola y lee una línea de texto introducida por el
-	 * usuario.
-	 *
-	 * @param mensaje Mensaje que se muestra antes de la lectura.
-	 * @return Texto introducido por el usuario, sin espacios iniciales ni finales.
+	 * {@inheritDoc}
 	 */
 
+	@Override
 	public String leerTexto(String mensaje) {
 		escribirLinea(mensaje);
 		String texto = sc.nextLine();

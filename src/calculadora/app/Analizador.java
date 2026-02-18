@@ -11,7 +11,7 @@ import calculadora.dominio.TipoOperador;
  * Clase encargada de analizar la entrada del usuario. Detecta comandos o
  * interpreta operaciones aritméticas (sin prioridad).
  */
-public class Analizador {
+public class Analizador implements IAnalizador {
 
 	private String entrada;
 	private List<Double> numeros;
@@ -20,13 +20,9 @@ public class Analizador {
 	private String mensajeError;
 
 	/**
-	 * Analiza la entrada del usuario.
-	 *
-	 * @param entrada         Línea introducida por el usuario.
-	 * @param resultadoActual Último resultado de la calculadora (para sustituir
-	 *                        "result").
-	 * @return Resultado del análisis.
+	 * {@inheritDoc}
 	 */
+	@Override
 	public ResultadoAnalisis analizar(String entrada, double resultadoActual) {
 		resetEstado(entrada);
 
@@ -176,7 +172,7 @@ public class Analizador {
 			return resultadoActual;
 		}
 
-		String normalizado = lower.replace(',', '.'); // ???
+		String normalizado = lower.replace(',', '.');
 		try {
 			return Double.parseDouble(normalizado);
 		} catch (NumberFormatException e) {

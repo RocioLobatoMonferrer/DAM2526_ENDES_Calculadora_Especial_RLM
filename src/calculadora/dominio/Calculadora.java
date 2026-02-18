@@ -9,7 +9,7 @@ import java.util.List;
  * obtener el resultado actual y el historial de operaciones
  */
 
-public class Calculadora {
+public class Calculadora implements ICalculadora {
 	/**
 	 * Lista que almacena todas las operaciones realizadas para cuando se llame a
 	 * list<br>
@@ -34,21 +34,19 @@ public class Calculadora {
 	}
 
 	/**
-	 * Método que devuelve el historial
-	 * 
-	 * @return historial de todas las operaciones realizadas
+	 * {@inheritDoc}
 	 */
 
+	@Override
 	public List<Operacion> getHistorial() {
 		return historial;
 	}
 
 	/**
-	 * Método que devuelve el resultado actual, es decir, el útlimo que se calculo
-	 * 
-	 * @return resultadoActual de la última operación y si no, cero
+	 * {@inheritDoc}
 	 */
 
+	@Override
 	public double getResultadoActual() {
 		return resultadoActual;
 	}
@@ -66,17 +64,10 @@ public class Calculadora {
 	}
 
 	/**
-	 * Método que escoge el primer número de la lista de numeros como resultado para
-	 * poder calcular la operación que desee el usuario. Al final crea una operación
-	 * para poder añadirse al historial
-	 * 
-	 * @param numeros    Lista de numeros que introdujo el usuario. Siempre serán
-	 *                   pares
-	 * @param operadores Lista de operadores que introdujo el usuario. Siempre serán
-	 *                   impares
-	 * @param operacion  Cadena de texto que tiene la operación del usuario
+	 * {@inheritDoc}
 	 */
 
+	@Override
 	public void realizarCalculo(List<Double> numeros, List<TipoOperador> operadores, String operacion) {
 		resultadoActual = numeros.get(0);
 		for (int i = 0; i < operadores.size(); i++) {
@@ -103,27 +94,20 @@ public class Calculadora {
 	}
 
 	/**
-	 * Método que que permite el comando 'reset'<br>
-	 * Resetea la calculadora, volviendo a cero el resultado y limpiando la Lista
-	 * del historial
+	 * {@inheritDoc}
 	 */
 
+	@Override
 	public void reset() {
 		resultadoActual = 0;
 		historial.clear();
 	}
 
 	/**
-	 * Método que permite el comando 'list'<br>
-	 * Crea una lista en la cual se verá la operación con su resultado ordenados del
-	 * primer hasta la última operación.<br>
-	 * Si el historial está vacío, soltará un mensaje de error<br>
-	 * Si todo es correcto, creará la lista y dará el resultado de la última
-	 * operación
-	 * 
-	 * @return Cadena de texto que da la lista de operaciones y su último resultado
+	 * {@inheritDoc}
 	 */
 
+	@Override
 	public String list() {
 		StringBuilder s = new StringBuilder("");
 		List<Operacion> listaOperaciones = getHistorial();

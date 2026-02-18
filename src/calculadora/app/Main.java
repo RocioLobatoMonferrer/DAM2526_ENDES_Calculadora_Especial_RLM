@@ -1,13 +1,21 @@
 package calculadora.app;
 
+import calculadora.dominio.Calculadora;
+
 /**
- * Clase Main que simplemente se encarga de crear un objeto de tipo gestor de la
- * calculadora y que ese gestor ejecute el método ejecutarComando para así el
- * usuario pueda utilizar el programa
+ * Clase principal donde ejecutará el gestor de calculadora
  */
 public class Main {
 	public void main() {
-		GestorCalculadora gestor = new GestorCalculadora();
+		/**
+		 * Creación de los objetos consola, analizador, calculadora y gestor de la
+		 * calculadora
+		 */
+		Consola consola = new Consola();
+		Analizador analiza = new Analizador();
+		Calculadora calculadora = new Calculadora();
+		GestorCalculadora gestor = new GestorCalculadora(consola, analiza, calculadora);
+
 		gestor.ejecutarComando();
 	}
 
